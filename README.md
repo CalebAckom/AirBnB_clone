@@ -1,7 +1,6 @@
-#  AirBnB clone - The console
+# AirBnB clone - The console
 
 <img  width="521"  alt="image"  src="https://user-images.githubusercontent.com/53787841/86299550-29f40c80-bbc6-11ea-9e54-089ffdc7b4cf.png">
-
 
 ## Description
 
@@ -15,41 +14,38 @@ servers and one load balancer - with Nginx and HAProxy.
 * Full configuration of website with domain name
 * Serving of dynamic content using JavaScript
 
-####  [AirBnB clone - The console](https://intranet.hbtn.io/projects/263)
+### [AirBnB clone - The console](https://intranet.hbtn.io/projects/263)
+
 For further information, click on the previous link.
 
 ## Airbnb Clone - Structure
 
 <img width="701" alt="Airbnb Structure" src="https://user-images.githubusercontent.com/53787841/86388606-b2bc8800-bc5a-11ea-8ff3-8bc21e3fd2b3.png">
 
-
 ## UML - Airbnb Console
 
 ![UML - Airbnb](https://user-images.githubusercontent.com/53787841/86389113-75a4c580-bc5b-11ea-981c-d11499dca0b9.png)
 
-##  Contents:
+## Contents:
 
 - Project Description
 
-- General Objetives
+- General Objectives
 
 - Command Interpreter Description
 
-	* How to start it
-	* Commands and their usage
-	* How to use it
-	* examples
+* How to start it
+* Commands and their usage
+* How to use it
+* examples
 
 - Unittests
 
-
-##  Project Description
+## Project Description
 
 Airbnb Clone is the main project of the second trimester at Holberton School. The aim is to develop an entire web application that simulates the behavior of the Airbnb platform. Starting from the console or command interpreter, to manipulate data without a visual interface, like in a Shell (perfect for development and debugging), followed by the construction of a website (the front-end) that shows the final product to everybody: static and dynamic, once it's finished what follows is the connection with the database or files that store data (data = objects). And last but not least, the creation of an API that provides a communication interface between the front-end and your data (retrieve, create, delete, update them).
 
-
-
-##  General Objetives
+## General Objectives
 
 * How to create a Python package
 
@@ -63,7 +59,7 @@ Airbnb Clone is the main project of the second trimester at Holberton School. Th
 
 * How to manage datetime
 
-* What is an UUID
+* What is a UUID
 
 * What is *args and how to use it
 
@@ -71,15 +67,19 @@ Airbnb Clone is the main project of the second trimester at Holberton School. Th
 
 * How to handle named arguments in a function
 
-##  Command Interpreter Description
+## Command Interpreter Description
 
 * How to start it
 
-	Follow the instructions to get a copy of the program and run in your local machine:
-	- Clone the following repository.
-		> `https://github.com/CalebAckom/AirBnB_clone.git
-	- Run the program
-		> `./console.py`
+Follow the instructions to get a copy of the program and run in your local machine:
+
+- Clone the following repository.
+
+> `https://github.com/CalebAckom/AirBnB_clone.git
+
+- Run the program
+
+> `./console.py`
 
 * Commands and their usage
 
@@ -97,13 +97,13 @@ Airbnb Clone is the main project of the second trimester at Holberton School. Th
 | update() | `<class  name>.update(<id>, <attribute  name>, <attribute  value>)` | User.update("38f22813-2753-4d42-b37c-57a17f1e4f88", "age", 89) | Update an instance based on his ID |
 | update() with dictionary | `<class  name>.update(<id>, <dictionary  representation>)` | User.update("38f22813-2753-4d42-b37c-57a17f1e4f88", {'first_name': "John", "age": 89}) | Update an instance based on his ID with a dictionary |
 
-##  Prerequisites
+## Prerequisites
 
 For further installation is necessary to set this program on Ubuntu 14.04 LTS using Vagrant in VirtualBox.
 
 You need to install this software
 
-```
+```sh
 1. VirtualBox - Virtual Machine
 
 2. Vagrant
@@ -117,53 +117,55 @@ You need to install this software
 6. Usage: ./console.py
 ```
 
-##  Built with...
+## Built with...
 
 - Visual Studio Code - Coding and structuring.
 - python 3.4.3
 
-###  [BaseModel](./models/base_model.py)
+### [BaseModel](./models/base_model.py)
 
 * Write a class BaseModel that defines all common attributes/methods for other classes
 
-###  [File storage](./models/engine/file_storage.py)
+### [File storage](./models/engine/file_storage.py)
 
 * Write a class FileStorage that serializes instances to a JSON file and deserializes JSON file to instances
 
-###  [Console](./console.py)
+### [Console](./console.py)
 
 * Write a program called console.py that contains the entry point of the command interpreter:
 
-	- create
-	- show
-	- destroy
-	- all
-	- update
+- create
+- show
+- destroy
+- all
+- update
 
-###  [First User](./models/user.py)
+### [First User](./models/user.py)
 
 * Write a class User that inherits from BaseModel
 
-###  More classes
+### More classes
 
 * Classes that inherit from BaseModel:
 
-	- [State](./models/state.py)
+- [State](./models/state.py)
 
-	- [City](./models/city.py)
+- [City](./models/city.py)
 
-	- [Amenity](./models/amenity.py)
+- [Amenity](./models/amenity.py)
 
-	- [Place](./models/place.py)
+- [Place](./models/place.py)
 
-	- [Review](./models/review.py)
+- [Review](./models/review.py)
 
 ## Unittests
 
 All the tests should be executed at the root of the project by using the following command:
 
-`python3 -m unittest discover tests`
+```sh
+python3 -m unittest discover tests
+```
 
-##  Authors
+## Authors
 
 - [GitHub - CalebAckom](https://github.com/CalebAckom)
