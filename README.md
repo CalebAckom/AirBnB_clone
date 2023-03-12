@@ -77,7 +77,7 @@ Airbnb Clone is the main project of the second trimester at Holberton School. Th
 
 	Follow the instructions to get a copy of the program and run in your local machine:
 	- Clone the following repository.
-		> `https://github.com/Audraaires/AirBnB_clone.git
+		> `https://github.com/CalebAckom/AirBnB_clone.git
 	- Run the program
 		> `./console.py`
 
@@ -167,5 +167,3 @@ All the tests should be executed at the root of the project by using the followi
 ##  Authors
 
 - [GitHub - CalebAckom](https://github.com/CalebAckom)
-
-- [GitHub - Nii Ayitey Aryee](https://github.com/Eddie-blaze19)
