@@ -57,7 +57,7 @@ class TestHBNBCommand_help(unittest.TestCase):
 
     def test_help_create(self):
         h = ("Usage: create <class>\n        "
-             "Create a new class instance and print its id.")
+             "Create a new class instance of a given class and print the id of the instance.")
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("help create"))
             self.assertEqual(h, output.getvalue().strip())
@@ -70,7 +70,7 @@ class TestHBNBCommand_help(unittest.TestCase):
 
     def test_help_show(self):
         h = ("Usage: show <class> <id> or <class>.show(<id>)\n        "
-             "Display the string representation of a class instance of"
+             "Display the string representation of a class instance with"
              " a given id.")
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("help show"))
