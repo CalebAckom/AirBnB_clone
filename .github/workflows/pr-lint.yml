@@ -1,0 +1,14 @@
+name: Apollo Graph Deploy
+
+on: pull_request
+
+jobs:
+  setup:
+    name: Install Packages
+    run: |
+      pip install -r requirements.txt
+
+  linting:
+    name: Run Checks
+    run:  |
+      ./scripts/run-linters.sh
