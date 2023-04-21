@@ -1,14 +1,41 @@
-name: Apollo Graph Deploy
+name: Pull Request Checker
 
-on: pull_request
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [testing, main]
 
 jobs:
-  setup:
-    name: Install Packages
-    run: |
-      pip install -r requirements.txt
+  build:
+    runs-on: ubuntu-latest
 
-  linting:
-    name: Run Checks
-    run:  |
-      ./scripts/run-linters.sh
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      TEST_DATABASE_PREFIX: test_
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Black
+        run: |
+          ./scripts/run-black.sh
+
+      - name: Run Flake8
+        run: |
+          ./scripts/run-black.sh
+
+      - name: Run Isort
+        run: |
+          ./scripts/run-isort.sh
