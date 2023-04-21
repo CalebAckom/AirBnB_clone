@@ -7,21 +7,23 @@ Unittest classes:
     TestBaseModel_to_dict
 """
 import os
-import models
 import unittest
 from datetime import datetime
 from time import sleep
+
+import models
 from models.base_model import BaseModel
 
 
 class TestBaseModel_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the BaseModel class."""
+
     """
-    These tests ensure that a new instance of the BaseModel class is created 
-    correctly and that its attributes are the expected types. 
-    The tests also check that multiple instances have unique IDs and that 
-    they are sorted by their creation and update times. Additionally, the tests ensure 
-    that the __str__ method of BaseModel returns the expected string representation and 
+    These tests ensure that a new instance of the BaseModel class is created
+    correctly and that its attributes are the expected types.
+    The tests also check that multiple instances have unique IDs and that
+    they are sorted by their creation and update times. Additionally, the tests ensure
+    that the __str__ method of BaseModel returns the expected string representation and
     that BaseModel can be instantiated with either no arguments, kwargs, or both args and kwargs.
     """
 
@@ -96,10 +98,11 @@ class TestBaseModel_instantiation(unittest.TestCase):
 
 class TestBaseModel_save(unittest.TestCase):
     """Unittests for testing save method of the BaseModel class."""
+
     """
-     These tests ensure that the save() method updates the update time of a 
-     BaseModel instance and that multiple calls to the save() method result in multiple updates to the update time. 
-     Additionally, the tests ensure that the save() method does not accept arguments and 
+     These tests ensure that the save() method updates the update time of a
+     BaseModel instance and that multiple calls to the save() method result in multiple updates to the update time.
+     Additionally, the tests ensure that the save() method does not accept arguments and
      that it updates the file containing all saved instances of BaseModel.
     """
 
@@ -154,11 +157,12 @@ class TestBaseModel_save(unittest.TestCase):
 
 class TestBaseModel_to_dict(unittest.TestCase):
     """Unittests for testing to_dict method of the BaseModel class."""
+
     """
-    These tests ensure that the to_dict() method returns a dictionary 
-    containing the expected keys and values. The tests check that the dictionary contains 
-    id, created_at, updated_at, and __class__ keys and that the values for id and __class__ 
-    are the expected values. Additionally, the tests ensure that to_dict() correctly converts 
+    These tests ensure that the to_dict() method returns a dictionary
+    containing the expected keys and values. The tests check that the dictionary contains
+    id, created_at, updated_at, and __class__ keys and that the values for id and __class__
+    are the expected values. Additionally, the tests ensure that to_dict() correctly converts
     datetime objects to strings, and that the dictionary contains added attributes not belonging to BaseModel.
     """
 
@@ -192,10 +196,10 @@ class TestBaseModel_to_dict(unittest.TestCase):
         bm.id = "123456"
         bm.created_at = bm.updated_at = dt
         tdict = {
-            'id': '123456',
-            '__class__': 'BaseModel',
-            'created_at': dt.isoformat(),
-            'updated_at': dt.isoformat()
+            "id": "123456",
+            "__class__": "BaseModel",
+            "created_at": dt.isoformat(),
+            "updated_at": dt.isoformat(),
         }
         self.assertDictEqual(bm.to_dict(), tdict)
 

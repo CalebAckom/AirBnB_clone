@@ -6,21 +6,23 @@ Unittest classes:
     TestAmenity_to_dict
 """
 import os
-import models
 import unittest
 from datetime import datetime
 from time import sleep
+
+import models
 from models.amenity import Amenity
 
 
 class TestAmenity_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the Amenity class."""
-    """ensuring that the class can be instantiated without any arguments, 
-    that it is stored in the objects dictionary, that its ID is a public string, 
-    that its created_at and updated_at attributes are public datetimes, that its name is a public class attribute, 
-    that two instances of the class have different IDs, created_at, and updated_at attributes, 
-    and that the string representation of the class contains the correct values for its attributes. 
-    The class also tests that an instance of the class can be instantiated with kwargs 
+
+    """ensuring that the class can be instantiated without any arguments,
+    that it is stored in the objects dictionary, that its ID is a public string,
+    that its created_at and updated_at attributes are public datetimes, that its name is a public class attribute,
+    that two instances of the class have different IDs, created_at, and updated_at attributes,
+    and that the string representation of the class contains the correct values for its attributes.
+    The class also tests that an instance of the class can be instantiated with kwargs
     and that it raises an error if instantiated with None kwargs.
     """
 
@@ -94,9 +96,10 @@ class TestAmenity_instantiation(unittest.TestCase):
 
 class TestAmenity_save(unittest.TestCase):
     """Unittests for testing save method of the Amenity class."""
+
     """
-    ensuring that the updated_at attribute is updated when the save method is called, 
-    that the save method can be called with no arguments, that the file is updated after 
+    ensuring that the updated_at attribute is updated when the save method is called,
+    that the save method can be called with no arguments, that the file is updated after
     calling the save method, and that the save method raises an error when called with an argument.
     """
 
@@ -150,8 +153,9 @@ class TestAmenity_save(unittest.TestCase):
 
 class TestAmenity_to_dict(unittest.TestCase):
     """Unittests for testing to_dict method of the Amenity class."""
+
     """
-    ensuring that it returns a dictionary, that the dictionary contains the correct keys, 
+    ensuring that it returns a dictionary, that the dictionary contains the correct keys,
     that the dictionary contains added attributes, and that the dictionary's datetime attributes are strings.
     """
 
@@ -185,10 +189,10 @@ class TestAmenity_to_dict(unittest.TestCase):
         am.id = "123456"
         am.created_at = am.updated_at = dt
         tdict = {
-            'id': '123456',
-            '__class__': 'Amenity',
-            'created_at': dt.isoformat(),
-            'updated_at': dt.isoformat(),
+            "id": "123456",
+            "__class__": "Amenity",
+            "created_at": dt.isoformat(),
+            "updated_at": dt.isoformat(),
         }
         self.assertDictEqual(am.to_dict(), tdict)
 

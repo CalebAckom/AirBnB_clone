@@ -2,31 +2,32 @@
 """Defines the HBnB console."""
 
 """
-Importing the necessary libraries, 
-including cmd for building a command-line 
+Importing the necessary libraries,
+including cmd for building a command-line
 interface and re for working with regular expressions
-Importing the necessary classes from the models package, 
+Importing the necessary classes from the models package,
 which holds definitions for different classes in the storage engine.
 """
-
-
 
 
 import cmd
 import re
 from shlex import split
+
 from models import storage
+from models.amenity import Amenity
 from models.base_model import BaseModel
-from models.user import User
-from models.state import State
 from models.city import City
 from models.place import Place
-from models.amenity import Amenity
 from models.review import Review
+from models.state import State
+from models.user import User
+
+
 def parse(arg):
     """
-    A function that parses the argument passed to the console into tokens. 
-    This function extracts tokens enclosed in curly braces or square brackets 
+    A function that parses the argument passed to the console into tokens.
+    This function extracts tokens enclosed in curly braces or square brackets
     and separates them from the rest of the argument using the shlex.split() method
     """
     curly_braces = re.search(r"\{(.*?)\}", arg)
@@ -35,12 +36,12 @@ def parse(arg):
         if brackets is None:
             return [i.strip(",") for i in split(arg)]
         else:
-            lexer = split(arg[:brackets.span()[0]])
+            lexer = split(arg[: brackets.span()[0]])
             retl = [i.strip(",") for i in lexer]
             retl.append(brackets.group())
             return retl
     else:
-        lexer = split(arg[:curly_braces.span()[0]])
+        lexer = split(arg[: curly_braces.span()[0]])
         retl = [i.strip(",") for i in lexer]
         retl.append(curly_braces.group())
         return retl
@@ -48,7 +49,7 @@ def parse(arg):
 
 class HBNBCommand(cmd.Cmd):
     """Defines the HBNBCommand class that extends cmd.Cmd.
-    It contains methods that define the behavior of the 
+    It contains methods that define the behavior of the
     HBNB console commands.
 
     Attributes:
@@ -56,29 +57,21 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    __classes = {
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
-    }
+    __classes = {"BaseModel", "User", "State", "City", "Place", "Amenity", "Review"}
 
     def emptyline(self):
         """
-        A method that overrides the default emptyline method 
+        A method that overrides the default emptyline method
         to do nothing when the user enters an empty line
         """
         pass
 
     def default(self, arg):
         """
-        A method that overrides the default behavior of cmd.Cmd 
-        when an invalid command is entered. The default method 
-        tries to parse the entered command and call the corresponding method, 
-        e.g., "all()" or "destroy()". If the command cannot be parsed or the 
+        A method that overrides the default behavior of cmd.Cmd
+        when an invalid command is entered. The default method
+        tries to parse the entered command and call the corresponding method,
+        e.g., "all()" or "destroy()". If the command cannot be parsed or the
         method does not exist, the method prints an error message.
         """
         argdict = {
@@ -86,14 +79,14 @@ class HBNBCommand(cmd.Cmd):
             "show": self.do_show,
             "destroy": self.do_destroy,
             "count": self.do_count,
-            "update": self.do_update
+            "update": self.do_update,
         }
         match = re.search(r"\.", arg)
         if match is not None:
-            argl = [arg[:match.span()[0]], arg[match.span()[1]:]]
+            argl = [arg[: match.span()[0]], arg[match.span()[1] :]]
             match = re.search(r"\((.*?)\)", argl[1])
             if match is not None:
-                command = [argl[1][:match.span()[0]], match.group()[1:-1]]
+                command = [argl[1][: match.span()[0]], match.group()[1:-1]]
                 if command[0] in argdict.keys():
                     call = "{} {}".format(argl[0], command[1])
                     return argdict[command[0]](call)
@@ -184,10 +177,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
-       <class>.update(<id>, <attribute_name>, <attribute_value>) or
-       <class>.update(<id>, <dictionary>)
-        Update a class instance of a given id by adding or updating
-        a given attribute key/value pair or dictionary."""
+        <class>.update(<id>, <attribute_name>, <attribute_value>) or
+        <class>.update(<id>, <dictionary>)
+         Update a class instance of a given id by adding or updating
+         a given attribute key/value pair or dictionary."""
         argl = parse(arg)
         objdict = storage.all()
 
@@ -223,8 +216,9 @@ class HBNBCommand(cmd.Cmd):
         elif type(eval(argl[2])) == dict:
             obj = objdict["{}.{}".format(argl[0], argl[1])]
             for k, v in eval(argl[2]).items():
-                if (k in obj.__class__.__dict__.keys() and
-                        type(obj.__class__.__dict__[k]) in {str, int, float}):
+                if k in obj.__class__.__dict__.keys() and type(
+                    obj.__class__.__dict__[k]
+                ) in {str, int, float}:
                     valtype = type(obj.__class__.__dict__[k])
                     obj.__dict__[k] = valtype(v)
                 else:

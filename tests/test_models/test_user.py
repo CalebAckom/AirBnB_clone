@@ -6,10 +6,11 @@ Unittest classes:
     TestUser_to_dict
 """
 import os
-import models
 import unittest
 from datetime import datetime
 from time import sleep
+
+import models
 from models.user import User
 
 
@@ -173,10 +174,10 @@ class TestUser_to_dict(unittest.TestCase):
         us.id = "123456"
         us.created_at = us.updated_at = dt
         tdict = {
-            'id': '123456',
-            '__class__': 'User',
-            'created_at': dt.isoformat(),
-            'updated_at': dt.isoformat(),
+            "id": "123456",
+            "__class__": "User",
+            "created_at": dt.isoformat(),
+            "updated_at": dt.isoformat(),
         }
         self.assertDictEqual(us.to_dict(), tdict)
 

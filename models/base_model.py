@@ -1,21 +1,22 @@
 #!/usr/bin/python3
 """Defines the BaseModel class."""
-from models import storage
 import uuid
 from datetime import datetime
 
-class BaseModel():
-    """a class that defines base model
-    """
+from models import storage
+
+
+class BaseModel:
+    """a class that defines base model"""
 
     def __init__(self, *args, **kwargs):
         """
-        This method takes *args and **kwargs as arguments, 
-        which allows it to accept both positional and keyword arguments. 
-        It sets the id, created_at, and updated_at attributes if they are 
-        not provided as keyword arguments. If the attributes are provided as 
+        This method takes *args and **kwargs as arguments,
+        which allows it to accept both positional and keyword arguments.
+        It sets the id, created_at, and updated_at attributes if they are
+        not provided as keyword arguments. If the attributes are provided as
         keyword arguments, their values are converted to datetime objects using strptime.
-        
+
         Attributes
         id: a string assigned with uuid instance
         created_at: current datetime of an instance
@@ -48,9 +49,9 @@ class BaseModel():
 
     def save(self):
         """
-        This method updates the updated_at attribute 
-        of the instance to the current date and time using 
-        datetime.now() and saves the instance to the storage 
+        This method updates the updated_at attribute
+        of the instance to the current date and time using
+        datetime.now() and saves the instance to the storage
         using the storage.save() method.
         """
         self.updated_at = datetime.now()
@@ -58,10 +59,10 @@ class BaseModel():
 
     def to_dict(self):
         """
-        This method returns a dictionary containing 
-        all the attributes (keys and values) of the instance, 
-        as well as the __class__ attribute. The created_at 
-        and updated_at attributes are converted to ISO format 
+        This method returns a dictionary containing
+        all the attributes (keys and values) of the instance,
+        as well as the __class__ attribute. The created_at
+        and updated_at attributes are converted to ISO format
         using isoformat().
 
         Attributes
@@ -78,8 +79,8 @@ class BaseModel():
 
     def __str__(self):
         """
-        This method returns a string representation of the instance, 
-        which includes the class name, id, and the contents of the __dict__ 
+        This method returns a string representation of the instance,
+        which includes the class name, id, and the contents of the __dict__
         attribute of the instance, thus, returns a string of the class name
         id and contents of the dictionary
         """
