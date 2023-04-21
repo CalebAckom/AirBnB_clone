@@ -1,18 +1,14 @@
-name: Pull Request Checker
+name: Linters
 
 on:
   push:
-    branches: [main, staging]
+    branches: [main]
   pull_request:
     branches: [testing, main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      TEST_DATABASE_PREFIX: test_
 
     steps:
       - name: Checkout code
@@ -21,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: 3.11
 
       - name: Install dependencies
         run: |
@@ -34,7 +30,7 @@ jobs:
 
       - name: Run Flake8
         run: |
-          ./scripts/run-black.sh
+          ./scripts/run-flake8.sh
 
       - name: Run Isort
         run: |
